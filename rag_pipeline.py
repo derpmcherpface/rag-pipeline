@@ -61,3 +61,5 @@ rag_chain = (
     | llm
     | StrOutputParser()
 )
+
+rag_chain.invoke("What is Task Decomposition?")

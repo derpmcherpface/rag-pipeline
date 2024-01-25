@@ -52,14 +52,12 @@ retriever = db.as_retriever()
 
 prompt = hub.pull("rlm/rag-prompt")
 llm = Ollama(
-    model="codellama", callback_manager=CallbackManager([StreamingStdOutCallbackHandler()])
+    model="llama2", callback_manager=CallbackManager([StreamingStdOutCallbackHandler()])
 )
 
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
-print('question?')
-question = "tell me about memory"
 rag_chain = (
     {"context": retriever | format_docs, "question": RunnablePassthrough()}
     | prompt
@@ -67,4 +65,11 @@ rag_chain = (
     | StrOutputParser()
 )
 
+print('\n-what is task decomposition-\n')
 rag_chain.invoke("What is Task Decomposition?")
+print('\n-What is Tree of thoughts-\n')
+rag_chain.invoke("What is Tree of thoughts?")
+#print('\n-What are the types of memory for an ai agent-\n')
+#rag_chain.invoke("What are the types of memory for an ai agent?\n")
+print('\n-What are the types of Inner Product Search MIPS given in the context?-\n')
+rag_chain.invoke("What are the types of Inner Product Search MIPS given in the context?")

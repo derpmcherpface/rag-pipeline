@@ -40,3 +40,12 @@ print("running LLM chain")
 # ask the user question about NFL 2010
 print(llm_chain.run(question))
 
+# generating multiple questions
+# --------------------------------------------------------------------
+
+
+
+
+
+
+

@@ -52,7 +52,7 @@ prompt_template = "Summarize the following content: {content}"
 
 ## Here's where we diverge from the previous example.
 llm = Ollama(
-    model="codellama", callback_manager=CallbackManager([StreamingStdOutCallbackHandler()])
+    model="vicuna", callback_manager=CallbackManager([StreamingStdOutCallbackHandler()])
     )
 
 llm_chain = LLMChain(
@@ -76,6 +76,7 @@ agent = initialize_agent(
     verbose=True
 )
 
+# here it is stupid and tries to display using the web fetcher triggering an error. Find better prompt or model
 prompt = "Research how to use the requests library in Python. Use your tools to search and summarize content into a guide on how to use the requests library."
 
 print(agent.run(prompt))
